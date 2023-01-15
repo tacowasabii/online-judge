@@ -3,7 +3,7 @@ def solution(participant, completion):
     a = dict.fromkeys(participant,0)
     for i in participant:
         a[i] += 1
-    # 모법 풀이
+    # 모 풀이
     a = {}
     for i in participant:
         a[i] = a.get(i,0) + 1
