@@ -1,2 +1,2 @@
 def solution(s):
-    return ''.join(sorted(s, reverse=True, key=ord))
+    return ''.join(sorted(s, reverse=True))
