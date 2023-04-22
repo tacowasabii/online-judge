@@ -1,28 +1,31 @@
 import sys
+
 input = sys.stdin.readline
-m = int(input())
+n = int(input())
 s = set()
-for _ in range(m):
-  arr = list(input().split())
-  c = arr[0]
-  if c == 'add':
-    s.add(int(arr[1]))
-  elif c == 'remove':
-    try:
-      s.remove(int(arr[1]))
-    except:
-      pass
-  elif c == 'check':
-    if int(arr[1]) in s:
-        print(1)
+for _ in range(n):
+    a = input().strip()
+    if a == 'all':
+        s = set(i for i in range(1, 21))  # 숫자를 int 타입으로 처리하도록 변경
+    elif a == 'empty':
+        s = set()
     else:
-      print(0)
-  elif c == 'toggle':
-    if int(arr[1]) in s:
-      s.remove(int(arr[1]))
-    else:
-      s.add(int(arr[1]))
-  elif c == 'all':
-    s = set([i for i in range(1,21)])
-  else:
-    s = set()
+        b, c = a.split()
+        c = int(c)  # 숫자를 int 타입으로 처리하도록 변경
+        if b == 'add':
+            s.add(c)
+        elif b == 'remove':
+            try:  # try-except를 사용하여 예외 처리
+                s.remove(c)
+            except KeyError:
+                continue
+        elif b == 'check':
+            if c in s:
+                print(1)
+            else:
+                print(0)
+        elif b == 'toggle':
+            if c in s:
+                s.remove(c)
+            else:
+                s.add(c)
