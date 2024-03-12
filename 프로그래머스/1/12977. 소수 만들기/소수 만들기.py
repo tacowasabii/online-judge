@@ -1,7 +1,14 @@
+from itertools import combinations as cb
+
+def isPrime(n):
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
 def solution(nums):
-    answer = -1
-
-    # [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-    print('Hello Python')
-
+    answer = 0
+    for i in cb(nums,3):
+        if isPrime(sum(i)):
+            answer += 1
     return answer
