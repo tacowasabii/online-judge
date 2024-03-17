@@ -21,7 +21,4 @@ def solution(operations):
     
     if min_heap:
         return [-max_heap[0],min_heap[0]]
-    return [0,0]
-            
-    
-    return answer
+    return [0,0] 
