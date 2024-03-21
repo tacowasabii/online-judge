@@ -1,5 +1,3 @@
-from math import comb
-
 def solution(n):
     if n == 0 or n == 1:
         return 1
