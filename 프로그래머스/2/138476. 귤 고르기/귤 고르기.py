@@ -1,12 +1,13 @@
+from collections import Counter
+
 def solution(k, tangerine):
     answer = 0
-    dic = {}
-    for i in tangerine:
-        dic[i] = dic.get(i,0) + 1
-    sort = sorted(dic.items(), key = lambda x:x[1], reverse = True)\
+    fruits = Counter(tangerine)
+    nums = list(fruits.values())
+    nums.sort()
     
-    cnt = 0
-    for i,v in enumerate(sort):
-        cnt += v[1]
-        if cnt >= k:
-            return i+1
+    total = 0
+    while total < k:
+        total += nums.pop()
+        answer += 1
+    return answer
