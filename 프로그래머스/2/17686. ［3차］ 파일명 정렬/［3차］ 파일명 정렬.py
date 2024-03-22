@@ -1,26 +1,24 @@
-import re
-
 def split_filename(filename):
     h, n = '', ''
     index = 0
-    
-    while not filename[index].isdigit():
-        h += filename[index]
-        index += 1
-    
-    cnt = 0
-    while index < len(filename) and cnt < 5:
-        if not filename[index].isdigit():
+
+    for i in filename:
+        if i.isdecimal():
             break
-        n += filename[index]
+        h += i
         index += 1
-        cnt += 1
+    
+    for i in range(index, index + 5):
+        if i >= len(filename) or not filename[i].isdecimal():
+            break
+        n += filename[i]
     
     return h, n
-
+    
 def solution(files):
     def file_sort_key(filename):
-        head, number = split_filename(filename)
-        return [head.lower(), int(number)]
+        h, n = split_filename(filename)
+        
+        return [h.lower(), int(n)]
 
     return sorted(files, key = file_sort_key)
