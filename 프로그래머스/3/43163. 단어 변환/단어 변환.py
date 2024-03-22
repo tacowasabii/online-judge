@@ -1,5 +1,9 @@
 from collections import deque as dq
 
+# 무한 루프가 되고 답이 없는 경우가 없어서 통과했는데
+# 무한 루프가 되는 경우가 있을 수 있음
+# 그래서 방문한 노드를 체크해야 함
+# 그래프 탐색 알고리즘에서는 방문한 노드를 체크하는 것이 중요함
 def can_transform(a, b):
     tmp = [1 for i, j in zip(a, b) if i!=j]
     
