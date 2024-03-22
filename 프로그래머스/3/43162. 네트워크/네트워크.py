@@ -1,18 +1,18 @@
-def dfs(computers, visited, start):
-    stack = [start]
-    while stack:
-        j = stack.pop()
-        if not visited[j]:
-            visited[j] = True
-            for i in range(len(computers)):
-                if computers[j][i] == 1 and not visited[i]:
-                    stack.append(i)
-
 def solution(n, computers):
-    visited = [False] * n
+    visited = [0] * n
     network_count = 0
-    for start in range(n):
-        if not visited[start]:
-            dfs(computers, visited, start)
+    
+    for i in range(n):
+        if visited[i] == 0:
+            stack = [i]
+            
+            while stack:
+                node = stack.pop()
+                if not visited[node]:
+                    visited[node] = 1
+                    for j, v in enumerate(computers[node]):
+                        if v == 1 and not visited[j]:
+                            stack.append(j)
             network_count += 1
+    
     return network_count
