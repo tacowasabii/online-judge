@@ -5,13 +5,11 @@ def solution(topping):
     left = Counter()
     right = Counter(topping)
     
-    for i in range(len(topping)):
-        left[topping[i]] += 1
-        right[topping[i]] -= 1
-        
-        if right[topping[i]] == 0:
-            del right[topping[i]]
-        
+    for i in topping:
+        left[i] = left.get(i, 0) + 1
+        right[i] -= 1
+        if right[i] == 0:
+            del right[i]
         if len(left) == len(right):
             answer += 1
     return answer
