@@ -6,7 +6,7 @@ def solution(topping):
     right = Counter(topping)
     
     for i in topping:
-        left[i] = left.get(i, 0) + 1
+        left[i] += 1
         right[i] -= 1
         if right[i] == 0:
             del right[i]
