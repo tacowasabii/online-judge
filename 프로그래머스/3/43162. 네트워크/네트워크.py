@@ -8,11 +8,11 @@ def solution(n, computers):
             
             while stack:
                 node = stack.pop()
-                if not visited[node]:
-                    visited[node] = 1
-                    for j, v in enumerate(computers[node]):
-                        if v == 1 and not visited[j]:
-                            stack.append(j)
+                # if not visited[node]:
+                visited[node] = 1
+                for j, v in enumerate(computers[node]):
+                    if v == 1 and not visited[j]:
+                        stack.append(j)
             network_count += 1
     
     return network_count
