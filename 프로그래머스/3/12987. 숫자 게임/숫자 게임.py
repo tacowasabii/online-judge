@@ -9,7 +9,9 @@ def solution(A, B):
             a += 1
             b += 1
             answer += 1
-        else:
+        elif A[a] > B[b]:
             a += 1
+        else:
+            b += 1
     
     return answer
