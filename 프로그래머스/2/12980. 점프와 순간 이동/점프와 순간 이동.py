@@ -4,6 +4,6 @@ def solution(n):
         if n % 2 == 0:
             n //= 2
         else:
-            n -= 1
+            n = (n - 1) // 2
             ans += 1
     return ans
