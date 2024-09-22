@@ -1,11 +1,11 @@
 def solution(name, yearning, photo):
-    answer = []
+    result = []
     dic = {}
     for i, v in enumerate(name):
         dic[v] = yearning[i]
-    for j in photo:
+    for i in photo:
         score = 0
-        for k in j:
-            score += dic.get(k,0)
-        answer.append(score)
-    return answer
+        for j in i:
+            score += dic.get(j, 0)
+        result.append(score)
+    return result
