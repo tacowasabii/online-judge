@@ -1,7 +1,9 @@
 def solution(elements):
-    answer = set()
-    tmp = elements + elements
-    for i in range(len(elements)):
-        for j in range(len(elements)):
-            answer.add(sum(tmp[j:j+i+1]))
-    return len(answer)
+    result = set()
+    length = len(elements)
+    elements += elements
+    for i in range(length):
+        for j in range(1, length + 1):
+            result.add(sum(elements[i:i + j]))
+        
+    return len(result)
