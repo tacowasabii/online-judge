@@ -6,14 +6,16 @@ def solution(answers):
     ss = [s1,s2,s3]
     
     scores = []
-    for i in ss:
+    for s in ss:
         score = 0
-        for idx, v in enumerate(answers):
-            if v == i[idx % len(i)]:
+        for i, v in enumerate(answers):
+            if v == s[i % len(s)]:
                 score += 1
         scores.append(score)
-        
-    for i, v in enumerate(scores):
-        if v == max(scores):
-            answer.append(i+1)
+    max_score = max(scores)
+
+    for i in range(3):
+        if max_score == scores[i]:
+            answer.append(i + 1)
+    
     return answer
