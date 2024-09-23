@@ -1,14 +1,18 @@
+from collections import deque
+
 def solution(cacheSize, cities):
     answer = 0
-    stack = []
+    cache = deque()
+    
     for i in cities:
-        if i.lower() not in stack:
-            stack.append(i.lower())
-            answer += 5
-            if len(stack) > cacheSize:
-                stack.pop(0)
-        else:
-            stack.remove(i.lower())
-            stack.append(i.lower())
+        i = i.lower()
+        if i in cache:
             answer += 1
+            cache.remove(i)
+        else:
+            answer += 5
+            if cache and len(cache) == cacheSize:
+                cache.popleft()
+        if cacheSize > 0:
+            cache.append(i)
     return answer
