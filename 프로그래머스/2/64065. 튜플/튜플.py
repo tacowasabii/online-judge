@@ -1,12 +1,11 @@
 def solution(s):
-    answer = []
-    a = s.strip("{}").split('},{')
-    tmp = []
-    for i in a:
-        tmp.append(i.split(','))
-    tmp.sort(key = lambda x:len(x))
-    sets = set()
-    for i in tmp:
-        answer.append(int(list(set(i) - sets)[0]))
-        sets = set(i)
+    s = s[2:-2].split("},{")
+    for i in range(len(s)):
+        s[i] = set(map(int, s[i].split(",")))
+    s.sort(key = lambda x:len(x))
+    answer = [list(s[0])[0]]
+
+    for i in range(len(s) - 1):
+        answer.append(list(s[i + 1] - s[i])[0])
+        
     return answer
