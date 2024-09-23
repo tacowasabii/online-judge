@@ -1,21 +1,19 @@
 from math import ceil
 
 def solution(progresses, speeds):
-    tmp = []
     ans = []
-    
+    days = []
     for i, v in enumerate(progresses):
-        tmp.append(ceil((100-v)/speeds[i]))
-    
-    cnt = 0
-    start = tmp[0]
-    for i, v in enumerate(tmp):
-        cnt += 1
-        if i != len(tmp) - 1:
-            if start < tmp[i + 1]:
-                ans.append(cnt)
-                cnt = 0
-                start = tmp[i + 1]
+        days.append(ceil((100 - v) / speeds[i]))
+    day = 0
+    num = 0
+    for i in days:
+        if i > day:
+            day = i
+            ans.append(num)
+            num = 1
         else:
-             ans.append(cnt)
-    return ans
+            num += 1
+    
+    ans.append(num)
+    return ans[1:]
