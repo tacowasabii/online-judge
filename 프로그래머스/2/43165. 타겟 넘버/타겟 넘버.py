@@ -1,12 +1,16 @@
 def solution(numbers, target):
     answer = [0]
-    def sol(numbers, target, value, idx):
-        if len(numbers) == idx:
-            if target == value:
+    
+    def cal(numbers, num, target):
+        copy_numbers = list(numbers)
+        n = copy_numbers.pop()
+        if not copy_numbers:
+            if target == num + n:
+                answer[0] += 1
+            if target == num - n:
                 answer[0] += 1
         else:
-            a = numbers[idx]
-            sol(numbers, target, value - a, idx + 1)
-            sol(numbers, target, value + a, idx + 1)
-    sol(numbers, target, 0, 0)
+            cal(copy_numbers, num + n, target)
+            cal(copy_numbers, num - n, target)
+    cal(numbers, 0, target)
     return answer[0]
