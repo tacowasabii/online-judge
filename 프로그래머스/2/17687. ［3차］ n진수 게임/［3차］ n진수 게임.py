@@ -1,46 +1,38 @@
-def toN(t, n):
-    N = ''
-    while t >= n:
-        tmp = t % n
-        if tmp == 10:
-            tmp = 'A'
-        elif tmp == 11:
-            tmp = 'B'
-        elif tmp == 12:
-            tmp = 'C'
-        elif tmp == 13:
-            tmp = 'D'
-        elif tmp == 14:
-            tmp = 'E'
-        elif tmp == 15:
-            tmp = 'F'
-        N += str(tmp)
-        t = t // n
-    if t == 10:
-        t = 'A'
-    elif t == 11:
-        t = 'B'
-    elif t == 12:
-        t = 'C'
-    elif t == 13:
-        t = 'D'
-    elif t == 14:
-        t = 'E'
-    elif t == 15:
-        t = 'F'
-    N += str(t)
+def toN(num, n):
+    if num == 0:
+        return '0'
+    tmp = []
+    while num > 0:
+        tmp.append(num % n)
+        num //= n
+    tmp = tmp[::-1]
     
-    return N[::-1]
+    result = ''
+    for i in tmp:
+        if i == 10:
+            result += 'A'
+        elif i == 11:
+            result += 'B'
+        elif i == 12:
+            result += 'C'
+        elif i == 13:
+            result += 'D'
+        elif i == 14:
+            result += 'E'
+        elif i == 15:
+            result += 'F'
+        else:
+            result += str(i)
+    return result
 
 def solution(n, t, m, p):
     answer = ''
-    tmp = ''
-    length = p + m * (t - 1)
-    cnt = 0
-    print(toN(11,16))
-    while len(tmp) <= length:
-        tmp += toN(cnt, n)
-        cnt += 1
-    for i in range(p-1, length, m):
-        answer += tmp[i]
+    string = ''
+    num = 0
+    while len(string) < m * (t - 1) + p:
+        string += toN(num, n)
+        num += 1
+
+    for i in range(p - 1, m * (t - 1) + p, m):
+        answer += string[i]
     return answer
