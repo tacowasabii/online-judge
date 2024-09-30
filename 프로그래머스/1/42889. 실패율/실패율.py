@@ -7,4 +7,4 @@ def solution(N, stages):
             total -= stages.count(i)
     for i in range(1, N+1):
         dic[i] = dic.get(i,0)
-    return sorted(dic, key=lambda x: dic[x], reverse=True)
+    return sorted(dic, key=lambda x: dic[x], reverse=True) 
