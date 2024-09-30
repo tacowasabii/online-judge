@@ -1,10 +1,18 @@
 def solution(N, stages):
-    total = len(stages)
     dic = {}
-    for i in sorted(list(set(stages))):
-        if i <= N:
-            dic[i] = stages.count(i) / total
-            total -= stages.count(i)
-    for i in range(1, N+1):
-        dic[i] = dic.get(i,0)
-    return sorted(dic, key=lambda x: dic[x], reverse=True) 
+    for i in range(1, N + 1):
+        dic[i] = 0
+    for i in stages:
+        if i in dic:
+            dic[i] += 1
+    total = len(stages)
+    
+    fail = {}
+    for i in range(1, N + 1):
+        if total != 0:
+            fail[i] = dic[i] / total
+        else:
+            fail[i] = 0
+        total -= dic[i]
+    
+    return sorted(fail, reverse = True, key = lambda x:fail[x])
