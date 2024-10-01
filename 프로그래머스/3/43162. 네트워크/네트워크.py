@@ -10,7 +10,7 @@ def solution(n, computers):
                 point = stack.pop()
                 visited[point] = 1
                 for j, v in enumerate(computers[point]):
-                    if visited[j] == 0 and j != point and v == 1:
+                    if visited[j] == 0 and v == 1:
                         stack.append(j)
         
     return ans
