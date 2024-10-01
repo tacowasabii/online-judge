@@ -1,25 +1,25 @@
 from collections import deque
 
 def solution(maps):
-    n, m = len(maps), len(maps[0])  
-    dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)] 
+    row = len(maps)
+    col = len(maps[0])
+    dr = [1, 0, -1, 0]
+    dc = [0, 1, 0, -1]
     
-    def isValid(x, y):
-        if 0 <= x <= n-1 and 0 <= y <= m-1 and maps[x][y] == 1:
-            return True
+    queue = deque([[0, 0]])
+    maps[0][0] = 2
+    
+    while queue:
+        r, c = queue.popleft()
         
-    dq = deque([(0,0)])
-    maps[0][0] = 2 
-    
-    while dq:
-        x, y = dq.popleft()
-        if x == n-1 and y == m-1:
-            return maps[x][y] - 1
-        for dx, dy in dirs:
-            nx = x + dx
-            ny = y + dy
-            if isValid(nx,ny):
-                maps[nx][ny] = maps[x][y] + 1
-                dq.append((nx,ny))
+        if r == row - 1 and c == col - 1:
+            return maps[r][c] - 1
+        
+        for i in range(4):
+            nr = r + dr[i]
+            nc = c + dc[i]
+            if 0 <= nr < row and 0 <= nc < col and maps[nr][nc] == 1:
+                maps[nr][nc] = maps[r][c] + 1
+                queue.append([nr, nc])
     
     return -1 
