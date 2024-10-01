@@ -1,16 +1,21 @@
 def solution(babbling):
     prs = ["aya", "ye", "woo", "ma"]
     cnt = 0
-    for i in babbling:
-        tmp = ''
-        while i:
-            length = len(i)
+    
+    for word in babbling:
+        prev_pr = ""
+        i = 0
+        while i < len(word):
+            found = False
             for pr in prs:
-                if i.startswith(pr) and pr != tmp:
-                    tmp = pr
-                    i = i[len(pr):]
-            if length == len(i):
+                if word[i:].startswith(pr) and prev_pr != pr:
+                    prev_pr = pr
+                    i += len(pr)
+                    found = True
+            if not found:
                 break
-        if not i:
+        if i == len(word):
             cnt += 1
+            
     return cnt
+            
