@@ -2,14 +2,14 @@ from collections import Counter
 
 def solution(topping):
     answer = 0
-    left = Counter()
+    left = {}
     right = Counter(topping)
     
-    for i in topping:
-        left[i] += 1
-        right[i] -= 1
-        if right[i] == 0:
-            del right[i]
+    for i in range(len(topping)):
+        left[topping[i]] = left.get(topping[i], 0) + 1
+        right[topping[i]] -= 1
+        if right[topping[i]] == 0:
+            del right[topping[i]]
         if len(left) == len(right):
             answer += 1
     return answer
