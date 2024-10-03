@@ -1,15 +1,11 @@
 def solution(prices):
-    answer = []
-    dic = {}
-    time = [0] * len(prices)
-    
+    answer = [0] * len(prices)
+    stack = []
     for i, v in enumerate(prices):
-        if i != len(prices) - 1:
-            for j in range(i + 1, len(prices)):
-                if v > prices[j]: 
-                    time[i] = j - i
-                    break
-                if j == len(prices) - 1:
-                    time[i] = j - i
-                
-    return time
+        while stack and prices[stack[-1]] > v:
+            idx = stack.pop()
+            answer[idx] = i - idx
+        stack.append(i)
+    for i in stack:
+        answer[i] = len(prices) - i - 1
+    return answer
