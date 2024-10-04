@@ -5,12 +5,11 @@ def getRank(n):
         return 7 - n
 
 def solution(lottos, win_nums):
-    answer = []
-    cnt = 0
+    zero = 0
+    same = 0
     for i in lottos:
         if i in win_nums:
-            cnt += 1
-    min = getRank(cnt)
-    max = getRank(cnt + lottos.count(0))
-        
-    return [max,min]
+            same += 1
+        elif i == 0:
+            zero += 1
+    return [getRank(same + zero), getRank(same)]
