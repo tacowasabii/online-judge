@@ -5,7 +5,7 @@ def solution(dartResult):
         if i.isnumeric():
             num += i
         else:
-            if len(num) > 0:
+            if num:
                 answer.append(int(num))
                 num = ""
             if i == 'D':
