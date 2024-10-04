@@ -1,28 +1,22 @@
 def solution(dartResult):
     answer = []
-    
     num = ""
     for i in dartResult:
         if i.isnumeric():
             num += i
         else:
-            if num:
+            if len(num) > 0:
                 answer.append(int(num))
                 num = ""
             if i == 'D':
-                tmp = answer.pop()
-                answer.append(tmp ** 2)
+                answer[-1] = answer[-1] ** 2
             elif i == 'T':
-                tmp = answer.pop()
-                answer.append(tmp ** 3)
+                answer[-1] = answer[-1] ** 3
             elif i == '*':
-                tmp = answer.pop()
-                if len(answer) >= 1:
-                    tmp2 = answer.pop()
-                    answer.append(tmp2 * 2)
-                answer.append(tmp * 2)
+                answer[-1] *= 2
+                if len(answer) >= 2:
+                    answer[-2] *= 2
             elif i == '#':
-                tmp = answer.pop()
-                answer.append(-tmp)
-    
+                answer[-1] = -answer[-1]
+            
     return sum(answer)
