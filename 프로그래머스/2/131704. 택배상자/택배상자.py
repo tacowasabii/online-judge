@@ -1,24 +1,23 @@
 from collections import deque as dq
 
 def solution(order):
+    ans = 0
+    idx = 0
     boxes = dq([i for i in range(1, len(order) + 1)])
-    order = dq(order)
-    answer = 0
-    sub = dq([])
+    sub = dq([0])
     
-    while len(order) > 0:
-        tmp = order.popleft()
-        if len(boxes) > 0 and tmp == boxes[0]:
-            boxes.popleft()
-            answer += 1
-        elif len(sub) > 0 and tmp == sub[0]:
-            sub.popleft()
-            answer += 1
-        elif len(boxes) == 0 and (len(sub) == 0 or sub[0] != tmp):
+    while idx < len(order):
+        if len(boxes) == 0 and order[idx] != sub[0]:
             break
+        if boxes and boxes[0] == order[idx]:
+            boxes.popleft()
+            idx += 1
+            ans += 1
+        elif sub[0] == order[idx]:
+            sub.popleft()
+            idx += 1
+            ans += 1
         else:
-            a = boxes.popleft()
-            sub.appendleft(a)
-            order.appendleft(tmp)
+            sub.appendleft(boxes.popleft())
             
-    return answer
+    return ans
