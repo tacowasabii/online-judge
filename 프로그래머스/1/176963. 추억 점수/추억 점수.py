@@ -8,4 +8,4 @@ def solution(name, yearning, photo):
         for j in i:
             score += dic.get(j, 0)
         result.append(score)
-    return result
+    return result 
