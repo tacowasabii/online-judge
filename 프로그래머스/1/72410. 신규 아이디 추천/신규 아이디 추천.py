@@ -8,7 +8,7 @@ def solution(new_id):
         if tmp[i] == '.' and tmp[i+1] == '.':
             tmp[i] = ''
     tmp = ''.join(tmp)
-    tmp = tmp.strip('.')
+    tmp = tmp.strip('.') 
     if not tmp:
         tmp += 'a'
     new_id = tmp[:15]
