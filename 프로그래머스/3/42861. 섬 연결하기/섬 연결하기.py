@@ -22,5 +22,5 @@ def solution(n, costs):
         if find_parent(parent, a) != find_parent(parent, b):
             union_parent(parent, a, b)
             answer += cost
-
+    
     return answer
