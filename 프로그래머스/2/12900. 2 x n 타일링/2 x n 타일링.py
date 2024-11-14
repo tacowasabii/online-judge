@@ -8,4 +8,4 @@ def solution(n):
         prev, cur = cur, (prev + cur) % 1000000007
     
     return cur
-    
+     
