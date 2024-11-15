@@ -9,7 +9,7 @@ def solution(survey, choices):
             dic[v[0]] = dic.get(v[0],0) + 2
         elif choice == 3:
             dic[v[0]] = dic.get(v[0],0) + 1
-        elif choice == 5:
+        elif choice == 5: 
             dic[v[1]] = dic.get(v[1],0) + 1
         elif choice == 6:
             dic[v[1]] = dic.get(v[1],0) + 2
